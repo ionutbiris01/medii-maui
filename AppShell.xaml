@@ -6,9 +6,15 @@
     xmlns:local="clr-namespace:Medii_maui"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <ShellContent
+ Title="Deliveries"
+ ContentTemplate="{DataTemplate local:MainPage}"
+ />
+        <ShellContent
+ Title="About"
+ ContentTemplate="{DataTemplate local:AboutPage}"
+ />
+    </TabBar>
 
 </Shell>
