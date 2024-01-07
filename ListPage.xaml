@@ -26,25 +26,29 @@ HeightRequest="50" >
                 <local:ValidationBehaviour />
             </Editor.Behaviors>
         </Editor>
+        <Label Text="Choose current status:" />
+        <CollectionView x:Name="statusCollectionView"
+                SelectionMode="Multiple"
+                ItemsSource="{Binding Statuses}"
+                SelectionChanged="OnStatusCollectionViewSelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Button Text="Save"
- Clicked="OnSaveButtonClicked" />
+Clicked="OnSaveButtonClicked" />
             <Button Grid.Column="1"
- Text="Delete"
- Clicked="OnDeleteButtonClicked"/>
+Text="Delete"
+Clicked="OnDeleteButtonClicked"/>
         </Grid>
-        <ListView x:Name="listView"
- Margin="20">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Detail="{Binding StatusName}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button Text="Choose current status:" MaximumWidthRequest="300"/>
-    </StackLayout>
+    </StackLayout>
 </ContentPage>

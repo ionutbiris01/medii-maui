@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Medii_maui.Models;
+using SQLiteNetExtensionsAsync.Extensions;
+using SQLiteNetExtensions.Extensions;
 
 namespace Medii_maui.Data
 {
@@ -14,12 +16,13 @@ namespace Medii_maui.Data
             _database.CreateTableAsync<Delivery>().Wait();
             _database.CreateTableAsync<Status>().Wait();
             _database.CreateTableAsync<ListStatus>().Wait();
+            _database.ExecuteAsync("PRAGMA foreign_keys=ON;").Wait();
 
         }
         #region Delivery
         public Task<List<Delivery>> GetDeliveriesAsync()
         {
-            return _database.Table<Delivery>().ToListAsync();
+            return _database.GetAllWithChildrenAsync<Delivery>();
         }
         public Task<Delivery> GetDeliveryAsync(int id)
         {
@@ -90,6 +93,13 @@ namespace Medii_maui.Data
             + " inner join ListStatus LS"
             + " on S.ID = LS.StatusID where LS.DeliveryID = ?",
             deliveryid);
+        }
+
+        public Task<Status> GetStatusByNameAsync(string statusName)
+        {
+            return _database.Table<Status>()
+                .Where(s => s.StatusName == statusName)
+                .FirstOrDefaultAsync();
         }
 
 
