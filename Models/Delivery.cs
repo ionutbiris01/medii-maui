@@ -18,6 +18,7 @@ namespace Medii_maui.Models
         [SQLiteNetExtensions.Attributes.ForeignKey(typeof(Status))]
         public int StatusID { get; set; }
 
+
         [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead)]
         public Status Status { get; set; }
     }

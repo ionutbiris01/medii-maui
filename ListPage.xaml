@@ -30,11 +30,12 @@ HeightRequest="50" >
         <CollectionView x:Name="statusCollectionView"
                 SelectionMode="Multiple"
                 ItemsSource="{Binding Statuses}"
+                SelectedItems="{Binding SelectedStatuses}"
                 SelectionChanged="OnStatusCollectionViewSelectionChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
-                        <Label Text="{Binding}" />
+                        <Label Text="{Binding StatusName}" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
