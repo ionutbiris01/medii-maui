@@ -21,4 +21,13 @@ public partial class ListPage : ContentPage
         await Navigation.PopAsync();
     }
 
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        var shopl = (Delivery)BindingContext;
+
+        listView.ItemsSource = await App.Database.GetListStatusesAsync(shopl.ID);
+    }
+
 }

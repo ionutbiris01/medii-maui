@@ -2,17 +2,30 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Medii_maui.ListPage"
-             Title="ListPage">
+             Title="ListPage"
+             xmlns:local="clr-namespace:Medii_maui">
     <StackLayout Margin="20">
         <Editor Placeholder="Enter the pick-up location:"
  Text="{Binding StartLocation}"
- HeightRequest="100" />
+ HeightRequest="50" >
+            <Editor.Behaviors>
+                <local:ValidationBehaviour />
+            </Editor.Behaviors>
+        </Editor>
         <Editor Placeholder="Enter the drop-out location:"
 Text="{Binding EndLocation}"
-HeightRequest="100" />
+HeightRequest="50" >
+            <Editor.Behaviors>
+                <local:ValidationBehaviour />
+            </Editor.Behaviors>
+        </Editor>
         <Editor Placeholder="Enter the reference phone number:"
 Text="{Binding PhoneNumber}"
-HeightRequest="100" />
+HeightRequest="50" >
+            <Editor.Behaviors>
+                <local:ValidationBehaviour />
+            </Editor.Behaviors>
+        </Editor>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -24,5 +37,14 @@ HeightRequest="100" />
  Text="Delete"
  Clicked="OnDeleteButtonClicked"/>
         </Grid>
+        <ListView x:Name="listView"
+ Margin="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Detail="{Binding StatusName}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Choose current status:" MaximumWidthRequest="300"/>
     </StackLayout>
 </ContentPage>

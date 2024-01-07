@@ -13,7 +13,7 @@ public partial class ListEntryPage : ContentPage
         base.OnAppearing();
         listView.ItemsSource = await App.Database.GetDeliveriesAsync();
     }
-    async void OnShopListAddedClicked(object sender, EventArgs e)
+    async void OnDeliveryAddedClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new ListPage
         {

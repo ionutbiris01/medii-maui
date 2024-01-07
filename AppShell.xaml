@@ -12,6 +12,10 @@
  ContentTemplate="{DataTemplate local:ListEntryPage}"
  />
         <ShellContent
+Title="Status Manager"
+ContentTemplate="{DataTemplate local:StatusPage}"
+/>
+        <ShellContent
  Title="About"
  ContentTemplate="{DataTemplate local:AboutPage}"
  />

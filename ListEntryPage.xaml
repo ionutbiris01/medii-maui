@@ -5,7 +5,7 @@
              Title="ListEntryPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Delivery"
- Clicked="OnShopListAddedClicked" />
+ Clicked="OnDeliveryAddedClicked" />
     </ContentPage.ToolbarItems>
     <ListView x:Name="listView" Margin="20" ItemSelected="OnListViewItemSelected">
         <ListView.ItemTemplate>
